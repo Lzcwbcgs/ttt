@@ -40,7 +40,7 @@ func (a *App) ShowFilePicker(title, confirmLabel, initial string, onPick func(st
 	fp := &filePicker{}
 
 	submit := func(text string) {
-		path := strings.TrimSpace(text)
+		path := text
 		if path == "" {
 			return
 		}
@@ -144,7 +144,7 @@ func (fp *filePicker) enter(dir string) {
 // it. Typing "~/repos/br" lists ~/repos showing only the matches, which keeps
 // the path box fast without forcing a separate search mode.
 func (fp *filePicker) syncFromInput(text string) {
-	path := workspace.ExpandPath(strings.TrimSpace(text))
+	path := workspace.ExpandPath(text)
 	if path == "" {
 		return
 	}
